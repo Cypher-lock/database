@@ -1,0 +1,45 @@
+{%extends 'base.html' %}
+
+{% block content %}
+        <div class="table-container">
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Material Name</th>
+                        <th>Acquisition Method</th>
+                        <th>Name</th>
+                        <th>Date Acquired</th>
+                        <th>Last Updated</th>
+                        <th>DOI</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for material in materials %}
+                        <tr>
+                            <td><a href="{% url 'materialInfo' sID=material.identifier %}">
+                                {{ material.identifier }}
+                            </a></td>
+                            <td>{{ material.composition }}</td>
+                            <td>{{ material.method }}</td>
+                            <td>{{ material.name }}</td>
+                            <td>{{ material.acquired }}</td>
+                            <td>{{ material.lastupdate }}</td>
+                            <td>{{ material.doi }}</td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="dropbtn">Edit</button>
+                                    <div class="dropdown-content">
+                                      <a href="{% url 'update' sID=material.identifier %}">Update</a>
+                                      <a href="{% url 'delete_item' sID=material.identifier %}">Delete</a>
+                                      <a href="{% url 'lock' sID=material.identifier %}">Lock</a>
+                                    </div>
+                                  </div>
+                            </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+{% endblock %}

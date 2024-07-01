@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="text-center"> Search Results for Composition</h1>
+{% if comps%}
+<table class="styled-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Material Name</th>
+            <th>Acquisition Method</th>
+            <th>Name</th>
+            <th>Date Acquired</th>
+            <th>Last Updated</th>
+            <th>DOI</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for comp in comps %}
+        <tr>
+            <td><a href="{% url 'materialInfo' sID=comp.identifier %}">
+                    {{ comp.identifier }}
+                </a></td>
+            <td>{{ comp.composition }}</td>
+            <td>{{ comp.method }}</td>
+            <td>{{ comp.name }}</td>
+            <td>{{ comp.acquired }}</td>
+            <td>{{ comp.lastupdate }}</td>
+            <td>{{ comp.doi }}</td>
+            <td>
+                <a href="{% url 'update' sID=comp.identifier %}">
+                    <button>Edit</button>
+                </a>
+
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<h5 class="text-center"> There are no results🙁</h5>
+{%endif%}
+</br>
+<h1 class="text-center"> Search Results for Name</h1>
+{% if named%}
+<table class="styled-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Material Name</th>
+            <th>Acquisition Method</th>
+            <th>Name</th>
+            <th>Date Acquired</th>
+            <th>Last Updated</th>
+            <th>DOI</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for names in named %}
+        <tr>
+            <td><a href="{% url 'materialInfo' sID=names.identifier %}">
+                    {{ names.identifier }}
+                </a></td>
+            <td>{{ names.composition }}</td>
+            <td>{{ names.method }}</td>
+            <td>{{ names.name }}</td>
+            <td>{{ names.acquired }}</td>
+            <td>{{ names.lastupdate }}</td>
+            <td>{{ names.doi }}</td>
+            <td>
+                <a href="{% url 'update' sID=names.identifier %}">
+                    <button>Edit</button>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<h5 class="text-center"> There are no results🙁</h5>
+{%endif%}
+
+</br>
+<h1 class="text-center"> Search Results for Summary</h1>
+{% if summed%}
+<table class="styled-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Material Name</th>
+            <th>Acquisition Method</th>
+            <th>Name</th>
+            <th>Date Acquired</th>
+            <th>Last Updated</th>
+            <th>DOI</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for sums in summed %}
+        <tr>
+            <td><a href="{% url 'materialInfo' sID=sums.identifier %}">
+                    {{ sums.identifier }}
+                </a></td>
+            <td>{{ sums.composition }}</td>
+            <td>{{ sums.method }}</td>
+            <td>{{ sums.name }}</td>
+            <td>{{ sums.acquired }}</td>
+            <td>{{ sums.lastupdate }}</td>
+            <td>{{ sums.doi }}</td>
+            <td>
+                <a href="{% url 'update' sID=sums.identifier %}">
+                    <button>Edit</button>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<h5 class="text-center"> There are no results🙁</h5>
+{%endif%}
+
+{% endblock %}

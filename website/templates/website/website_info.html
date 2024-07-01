@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content%}
+<center>
+    <h1>More Information</h1>
+</center>
+        <div class="table-container">
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>Related Media</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>Composition:</b><br>
+                            {{ in_depth.composition }}
+                        </td>
+                        <td class="w-25">
+                            {% if in_depth.sample_image %}
+                            <img src = "{{in_depth.sample_image.url}}" width = 300>
+                        {% else %}
+                            There are no images
+                        {%endif%}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Process Notes:</b><br>
+                            {{ in_depth.summary }}
+                        </td>
+                        <td>
+                        {%if in_depth.meta_data%}
+
+                            <a href="{{in_depth.meta_data.url}}"><b>Metadata File</b></a>
+                        {%else%}
+                        There is no Metadata file.
+                        {%endif%}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>DOI:</b><br>
+                            {{in_depth.doi}}
+                        </td>
+                        <td>
+                            <a href="protocol.pdf"><b>Additional Resources</b></a>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+{%endblock%}

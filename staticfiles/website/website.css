@@ -1,0 +1,98 @@
+.navbar-styled {
+  background-color: rgb(22, 58, 108);
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+  color: #fff;
+}
+
+.table-container {
+  width: 100%;
+}
+
+.styled-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: 'Times New Roman', Times, serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  width: 100%;
+}
+
+.styled-table thead tr {
+  background-color: #005498;
+  color: #ffffff;
+  text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid #005498;
+}
+
+.popup {
+  display: none;
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0px 0px 10px rgba(255, 255, 255);
+  z-index: 1;
+  width: 100px;
+  padding: 10px;
+}
+
+.popup-btn {
+  display: block;
+  width: 100%;
+  padding: 5px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.popup-btn:hover {
+  background-color: #f0f0f0;
+}
+a:link {
+  color: rgb(0, 0, 0);
+}
+
+a:visited {
+  color: rgb(140, 0, 255);
+}
+
+a:hover {
+  color: rgb(46, 80, 254);
+}
+
+a:active {
+  color: rgb(224, 157, 126);
+}
+
+.dots {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  /* The Arial font appears to have "square" dots */
+  font-size: 36px;
+  /* The size of the dots */
+  line-height: 1;
+  /* helps vertically position the dots */
+  margin-top: -10px;
+  /* helps "raise" the dots higher */
+  letter-spacing: -2px;
+  /* "squeezes" the dots closer together */
+}

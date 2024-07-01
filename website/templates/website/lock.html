@@ -1,0 +1,10 @@
+{%extends 'base.html'%}
+
+{% block content%}
+{%if is_locked%}
+    You have sucessfully locked the entry!
+{%else%}
+    This entry is already locked!
+{%endif%}
+
+{% endblock %}
