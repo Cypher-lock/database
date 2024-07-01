@@ -1,3 +1,4 @@
+import os
 from django.shortcuts import render, redirect
 from django.db import connection, connections
 from django.utils import timezone
@@ -200,6 +201,16 @@ def delete_item(request, sID):
     if curr_obj.lock:
         return render(request, 'website/fail.html', {})
 
+    if(curr_obj.meta_data):
+        meta_path = curr_obj.meta_data.path
+        if os.path.exists(meta_path):
+            os.remove(meta_path)
+
+    if(curr_obj.sample_image):
+        img_path = curr_obj.sample_image.path
+        if os.path.exists(img_path):
+            os.remove(img_path)
+        
     curr_obj.delete()
     return redirect('index')
 
