@@ -83,12 +83,10 @@ def search(request):
     if request.method == "POST":
         searched = request.POST['searched']
         projectsComp = Softmatterdata.objects.filter(composition__contains=searched)
-        projectsName = Softmatterdata.objects.filter(name__contains=searched)
         projectsSummary = Softmatterdata.objects.filter(summary__contains=searched)
 
         return render(request, "website/search_results.html",{
             "comps":projectsComp,
-            "named":projectsName,
             "summed":projectsSummary
         })
     
@@ -122,6 +120,7 @@ def search(request):
 
 def add_material(request):
     submitted = False
+    
     if request.method == 'POST':
         form=addForm(request.POST, request.FILES)
         if form.is_valid():

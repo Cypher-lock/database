@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% if user.is_authenticated %}
     <center>
     <h1>Add New Project</h1>
     <br/><br/>
@@ -16,4 +17,8 @@
         </form>
     {% endif %}
     </center>
+{% else %}
+<h1>Sorry! You must be logged in to view this page!</h1>
+{% endif %}
+
 {% endblock %}

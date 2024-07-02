@@ -7,6 +7,7 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 
 class AuthGroup(models.Model):
@@ -126,7 +127,7 @@ class Softmatterdata(models.Model):
     identifier = models.AutoField(primary_key=True)
     composition = models.CharField(max_length=255)
     method = models.CharField(max_length=255)
-    name = models.CharField(max_length=255)
+    name = models.ForeignKey(User, blank=True, null=True, on_delete=models.SET_NULL)
     acquired = models.DateField()
     lastupdate = models.DateField(auto_now=True)
     doi = models.CharField(max_length=255, blank=True, null=True)
@@ -144,7 +145,7 @@ class WebsiteMaterialsdb(models.Model):
     id = models.IntegerField(db_column='ID', unique=True)  # Field name made lowercase.
     identifier = models.CharField(db_column='Identifier', primary_key=True, max_length=200)  # Field name made lowercase.
     materialname = models.CharField(db_column='MaterialName', max_length=100)  # Field name made lowercase.
-    researchername = models.ForeignKey(AuthUser, models.DO_NOTHING, db_column='ResearcherName_id', blank=True, null=True)  # Field name made lowercase.
+    researchername = models.ForeignKey(User, models.DO_NOTHING, db_column='ResearcherName_id', blank=True, null=True)  # Field name made lowercase.
     dateacquired = models.DateField(db_column='DateAcquired')  # Field name made lowercase.
     dateupdated = models.DateField(db_column='DateUpdated')  # Field name made lowercase.
     doi = models.TextField(db_column='DOI')  # Field name made lowercase.

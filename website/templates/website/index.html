@@ -18,9 +18,13 @@
                 <tbody>
                     {% for material in materials %}
                         <tr>
+                            {% if user.is_authenticated %}
                             <td><a href="{% url 'materialInfo' sID=material.identifier %}">
                                 {{ material.identifier }}
                             </a></td>
+                            {% else %}
+                            <td> {{material.identifier}}</td>
+                            {% endif %}
                             <td>{{ material.composition }}</td>
                             <td>{{ material.method }}</td>
                             <td>{{ material.name }}</td>
@@ -28,14 +32,20 @@
                             <td>{{ material.lastupdate }}</td>
                             <td>{{ material.doi }}</td>
                             <td>
+                                {% if material.lock == False %}
+                                {% if user.is_authenticated %}
+                                {% if user == material.name%}
                                 <div class="dropdown">
-                                    <button class="dropbtn">Edit</button>
+                                    <!--button class="dropbtn">Edit</button-->
                                     <div class="dropdown-content">
                                       <a href="{% url 'update' sID=material.identifier %}">Update</a>
                                       <a href="{% url 'delete_item' sID=material.identifier %}">Delete</a>
                                       <a href="{% url 'lock' sID=material.identifier %}">Lock</a>
                                     </div>
                                   </div>
+                                  {% endif %}
+                                  {% endif %}
+                                  {% endif %}
                             </td>
                     </tr>
                     {% endfor %}

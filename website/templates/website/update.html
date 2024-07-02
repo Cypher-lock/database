@@ -1,10 +1,23 @@
 {%extends 'base.html' %}
 
 {% block content %}
+{% if user.is_authenticated %}
+    {% if user == data.name %}
     <h1>Edit Project</h1>
     <br/>
     <form action="" method = POST enctype="multipart/form-data">
         {% csrf_token %}
         {{form.as_p}}
         <input type = "submit" value = "Update Values" class = "btn btn-secondary">
+    {% else %}
+    <h2> Access Denied</h2>
+    <h2> Only the project manager can edit the entry</h2>
+    
+    Logged In User: {{user}}
+    <br/>
+    Project Manager: {{data.name}}
+    {% endif %}
+{% else %}
+<h1> Sorry. You must be logged in to view this page</h1>
+{% endif %}
 {% endblock %}

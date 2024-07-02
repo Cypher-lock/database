@@ -1,7 +1,7 @@
 {%extends 'base.html'%}
 
 {% block content%}
-{%if is_locked%}
+{%if is_locked == False%}
     You have sucessfully locked the entry!
 {%else%}
     This entry is already locked!

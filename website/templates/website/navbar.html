@@ -1,12 +1,25 @@
 <nav class="navbar navbar-expand-lg navbar-styled">
   <!-- Container wrapper -->
   <div class="container">
+    <div id = "add_mat">
       <script type="text/javascript">
           function redirectToAddMaterial() {
               window.location.href = "{% url 'add_material' %}";
           }
       </script>
+      {% if user.is_authenticated != False %}
      <button class="btn btn-primary add-material-btn" onclick="redirectToAddMaterial()">Add Material</button>
+     {% endif %}
+     </div>
+     <script type="text/javascript">
+        if(document.URL.includes("add_material")){
+            add_mat.style.display = "none"
+        }
+        else{
+            add_mat.syle.display="mat"
+        }
+
+    </script>
       <!-- Navbar brand -->
       <a class="navbar-brand" href="https://www.sandiego.edu/">
           <img id="USD-logo" src="https://gw-advance-prod-us-east-1-system.s3.amazonaws.com/uploads/entity/headlogo/57c9cca868aeae38369a07aa/Circle_Template.png" alt="USD Logo" draggable="false" height="50" />
@@ -22,5 +35,17 @@
           </form>
       </div>
       <button onclick="window.location.href='http://127.0.0.1:8000/website/';">Home</button>
+      {% if user.is_authenticated %}
+      <button class = "nav-item">
+        <a class = "nav-link" href = "{%url 'logout' %}">Log Out</a>
+      </button>
+      {% else %}
+      <button class = "nav-item">
+        <a class = "nav-link" href = "{%url 'login' %}">Login</a>
+      </button>
+      <button class = "nav-item">
+        <a class = "nav-link" href = "{%url 'register_user' %}">Register</a>
+      </button>
+      {% endif %}
   </div>
 </nav>
