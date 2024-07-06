@@ -34,7 +34,9 @@
               <a href="#!" class="text-white"><i class="fas fa-search ps-3"></i></a>
           </form>
       </div>
-      <button onclick="window.location.href='http://127.0.0.1:8000/website/';">Home</button>
+      <button class = "nav-item">
+        <a class = "nav-link" href = "{%url 'index' %}">Home</a>
+      </button>
       {% if user.is_authenticated %}
       <button class = "nav-item">
         <a class = "nav-link" href = "{%url 'logout' %}">Log Out</a>
