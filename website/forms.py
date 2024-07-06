@@ -4,6 +4,36 @@ from .models import Softmatterdata
 from django.core.exceptions import ValidationError
 import datetime
 
+composition_choices = [
+
+    ("actin", "actin"),
+    ("microtubules", "microtubules"),
+    ("crosslinkers", "crosslinkers"),
+    ("DNA", "DNA"),
+    ("kinesin", "kinesin"),
+    ("myosin", "myosin"),
+    ("hydrogel", "hydrogel"),
+    ("colloids", "colloids"),
+    ("ASE1", "ASE1"),
+    ("cells", "cells"),
+    ("phalloidin", "phalloidin"),
+    ("taxol", "taxol"),
+    ("GMPCPP", "GMPCPP"),
+    ("other", "other"),
+]
+
+acquisition_choices = [
+    ("epifluorescence", "epifluorescence"),
+    ("confocal", "confocal"),
+    ("optical tweezers", "optical tweezers"),
+    ("rheometer", "rheometer"),
+    ("light sheet", "light sheet"),
+    ("bright field", "bright field"),
+    ("TIRF", "TIRF"),
+    ("DLS", "DLS"),
+    ("other", "other"),
+]
+
 class dataForm(ModelForm):
     class Meta:
         model = Softmatterdata
@@ -18,8 +48,8 @@ class dataForm(ModelForm):
         }
 
         widgets = {
-            'composition': forms.TextInput(attrs={'class':'form-control', 'placeholder': 'Material Composition'}),
-            'method': forms.TextInput(attrs={'class':'form-control', 'placeholder': 'Acquisition Method'}),
+            'composition': forms.Select(attrs={'class':'form-control', 'placeholder': 'Material Composition'}, choices=composition_choices),
+            'method': forms.Select(attrs={'class':'form-control', 'placeholder': 'Acquisition Method'}, choices=acquisition_choices),
             'doi': forms.TextInput(attrs={'class':'form-control', 'placeholder': 'DOI'}),
             'summary':forms.TextInput(attrs={'class':'form-control', 'placeholder': 'Summary'}),
             'sample_image':'',
@@ -42,8 +72,8 @@ class addForm(ModelForm):
         }
 
         widgets = {
-            'composition': forms.TextInput(attrs={'class':'form-control'}),
-            'method':forms.TextInput(attrs={'class':'form-control'}),
+            'composition': forms.Select(attrs={'class':'form-select'}, choices=composition_choices),
+            'method':forms.Select(attrs={'class':'form-select'}, choices=acquisition_choices),
             'name': forms.Select(attrs={'class':'form-select'}),
             'acquired': forms.DateInput(attrs={'class':'form-control', 'type':'date'}),
             'doi': forms.TextInput(attrs={'class':'form-control'}),
