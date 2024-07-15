@@ -124,7 +124,9 @@ def add_material(request):
     if request.method == 'POST':
         form=addForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            x = form.save(commit=False)
+            x.name = request.user
+            x.save()
             return render(request, 'website/add_material.html', {
                 'submitted': True
             })
@@ -134,7 +136,7 @@ def add_material(request):
         if 'submitted' in request.GET:
             submitted = True
     """
-    form = addForm
+    form = addForm()
 
     return render(request, 'website/add_material.html', {
         'form':form, 
