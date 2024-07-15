@@ -65,11 +65,10 @@ class addForm(ModelForm):
                                           choices=acquisition_choices, label='Acquisition Method')
     class Meta:
         model = Softmatterdata
-        fields = ('composition', 'method', 'name', 'acquired', 'doi', 'summary', 'sample_image', 'meta_data')
+        fields = ('composition', 'method', 'acquired', 'doi', 'summary', 'sample_image', 'meta_data')
         labels = {
             'composition': 'Material Composition',
             'method':'Acquisition Method',
-            'name':'Name',
             'acquired':'Aquisition Date',
             'doi':'DOI',
             'summary':'Experimental Protoctol Details',
@@ -78,7 +77,6 @@ class addForm(ModelForm):
         }
 
         widgets = {
-            'name': forms.Select(attrs={'class':'form-select'}),
             'acquired': forms.DateInput(attrs={'class':'form-control', 'type':'date'}),
             'doi': forms.TextInput(attrs={'class':'form-control'}),
             'summary': forms.TextInput(attrs={'class':'form-control'}),
