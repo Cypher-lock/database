@@ -35,6 +35,10 @@ acquisition_choices = [
 ]
 
 class dataForm(ModelForm):
+    composition =  forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple,
+                                          choices=composition_choices, label='Material Composition')
+    method = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple,
+                                          choices=acquisition_choices, label='Acquisition Method')
     class Meta:
         model = Softmatterdata
         fields = ('composition', 'method', 'doi', 'summary', 'sample_image', 'meta_data')
@@ -48,8 +52,6 @@ class dataForm(ModelForm):
         }
 
         widgets = {
-            'composition': forms.Select(attrs={'class':'form-control', 'placeholder': 'Material Composition'}, choices=composition_choices),
-            'method': forms.Select(attrs={'class':'form-control', 'placeholder': 'Acquisition Method'}, choices=acquisition_choices),
             'doi': forms.TextInput(attrs={'class':'form-control', 'placeholder': 'DOI'}),
             'summary':forms.TextInput(attrs={'class':'form-control', 'placeholder': 'Summary'}),
             'sample_image':'',
@@ -57,6 +59,10 @@ class dataForm(ModelForm):
         }
 
 class addForm(ModelForm):
+    composition =  forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple,
+                                          choices=composition_choices, label='Material Composition')
+    method = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple,
+                                          choices=acquisition_choices, label='Acquisition Method')
     class Meta:
         model = Softmatterdata
         fields = ('composition', 'method', 'name', 'acquired', 'doi', 'summary', 'sample_image', 'meta_data')
@@ -72,8 +78,6 @@ class addForm(ModelForm):
         }
 
         widgets = {
-            'composition': forms.Select(attrs={'class':'form-select'}, choices=composition_choices),
-            'method':forms.Select(attrs={'class':'form-select'}, choices=acquisition_choices),
             'name': forms.Select(attrs={'class':'form-select'}),
             'acquired': forms.DateInput(attrs={'class':'form-control', 'type':'date'}),
             'doi': forms.TextInput(attrs={'class':'form-control'}),
