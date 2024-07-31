@@ -83,11 +83,11 @@ WSGI_APPLICATION = "AndersonMcGortyLabDB_Test.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'softmatterdb',
-        'USER': 'doadmin',
-        'PASSWORD': 'AVNS_I8Zm7kvsCUvxQYGL-8m',
-        'HOST': 'app-11527f32-58de-4dea-aa6f-31cd5d286cdf-do-user-14527951-0.b.db.ondigitalocean.com',
-        'PORT': '25060',
+        'NAME': os.environ.get('POSTGRES_DB'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'HOST': os.environ.get('POSTGRES_HOST'),
+        'PORT': os.environ.get('POSTGRES_PORT'),
         'OPTIONS': {
             'sslmode': 'require'
         }
@@ -146,6 +146,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 META_URL = '/meta/'
 META_ROOT = os.path.join(BASE_DIR, 'meta')
+
+ADDITION_URL = '/add_rec/'
+ADDITION_ROOT = os.path.join(BASE_DIR, 'add_rec')
 
 
 # Additional locations of static files

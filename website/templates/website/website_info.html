@@ -42,7 +42,12 @@
                             {{in_depth.doi}}
                         </td>
                         <td>
-                            <a href="protocol.pdf"><b>Additional Resources</b></a>
+                            {%if in_depth.additional_resources%}
+
+                            <a href="{{in_depth.additional_resources.url}}"><b>Additional Resources</b></a>
+                        {%else%}
+                        There are no other files.
+                        {%endif%}
 
                         </td>
                     </tr>

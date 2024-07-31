@@ -41,7 +41,7 @@ class dataForm(ModelForm):
                                           choices=acquisition_choices, label='Acquisition Method')
     class Meta:
         model = Softmatterdata
-        fields = ('composition', 'method', 'doi', 'summary', 'sample_image', 'meta_data')
+        fields = ('composition', 'method', 'doi', 'summary', 'sample_image', 'meta_data', 'additional_resources')
         labels = {
             'composition': 'Material Composition',
             'method':'Acquisition Method',
@@ -49,6 +49,7 @@ class dataForm(ModelForm):
             'summary':'Experimental Protoctol Details',
             'sample_image':'Sample Image',
             'meta_data':'Meta Data',
+            'additional_resources':'Additional Files',
         }
 
         widgets = {
@@ -56,6 +57,7 @@ class dataForm(ModelForm):
             'summary':forms.TextInput(attrs={'class':'form-control', 'placeholder': 'Summary'}),
             'sample_image':'',
             'meta_data':'',
+            'additional_resources':'',
         }
 
 class addForm(ModelForm):
@@ -65,7 +67,7 @@ class addForm(ModelForm):
                                           choices=acquisition_choices, label='Acquisition Method')
     class Meta:
         model = Softmatterdata
-        fields = ('composition', 'method', 'acquired', 'doi', 'summary', 'sample_image', 'meta_data')
+        fields = ('composition', 'method', 'acquired', 'doi', 'summary', 'sample_image', 'meta_data', 'additional_resources')
         labels = {
             'composition': 'Material Composition',
             'method':'Acquisition Method',
@@ -74,6 +76,7 @@ class addForm(ModelForm):
             'summary':'Experimental Protoctol Details',
             'sample_image':'Sample Image',
             'meta_data':'Meta Data',
+            'additional_resources': 'Additional Files'
         }
 
         widgets = {
@@ -82,6 +85,7 @@ class addForm(ModelForm):
             'summary': forms.TextInput(attrs={'class':'form-control'}),
             'sample_image':'',
             'meta_data':'',
+            'additional_resources':'',
         }
 
 
