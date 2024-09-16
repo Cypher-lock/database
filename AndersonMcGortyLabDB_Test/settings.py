@@ -26,8 +26,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-#os.getenv("DEBUG", "False")
+DEBUG = "True"
+#os.getenv("DEBUG", "False") == 
 ALLOWED_HOSTS = ['*']
 
 DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
@@ -149,6 +149,9 @@ META_ROOT = os.path.join(BASE_DIR, 'meta')
 
 ADDITION_URL = '/add_rec/'
 ADDITION_ROOT = os.path.join(BASE_DIR, 'add_rec')
+
+BARCODE_URL = '/barcode/'
+BARCODE_ROOT = os.path.join(BASE_DIR, 'barcode')
 
 
 # Additional locations of static files
