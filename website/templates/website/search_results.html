@@ -89,7 +89,7 @@
     <thead>
         <tr>
             <th>ID</th>
-            <th>Material Name</th>
+            <th>Material Composition</th>
             <th>Acquisition Method</th>
             <th>Name</th>
             <th>Date Acquired</th>
@@ -106,7 +106,11 @@
                 </a></td>
             <td>{{ sums.composition }}</td>
             <td>{{ sums.method }}</td>
+            {% if sums.name.first_name %}
+            <td>{{ sums.name.first_name }}</td>
+            {% else %}
             <td>{{ sums.name }}</td>
+            {% else %}
             <td>{{ sums.acquired }}</td>
             <td>{{ sums.lastupdate }}</td>
             <td>{{ sums.doi }}</td>

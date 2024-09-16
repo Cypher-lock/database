@@ -24,4 +24,4 @@ urlpatterns = [
     path('', include("website.urls")),
     path("members/", include('django.contrib.auth.urls')),
     path("members/", include("members.urls")),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.META_URL, document_root=settings.META_ROOT) + static(settings.ADDITION_URL, document_root=settings.ADDITION_ROOT)
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.META_URL, document_root=settings.META_ROOT) + static(settings.ADDITION_URL, document_root=settings.ADDITION_ROOT) + static(settings.BARCODE_URL, document_root=settings.BARCODE_ROOT)

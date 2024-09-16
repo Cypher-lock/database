@@ -8,7 +8,7 @@
           }
       </script>
       {% if user.is_authenticated != False %}
-     <button class="btn btn-primary add-material-btn" onclick="redirectToAddMaterial()">Add Material</button>
+     <button class="nav-item" onclick="redirectToAddMaterial()">Add Material</button>
      {% endif %}
      </div>
      <script type="text/javascript">
@@ -21,8 +21,8 @@
 
     </script>
       <!-- Navbar brand -->
-      <a class="navbar-brand" href="https://www.sandiego.edu/">
-          <img id="USD-logo" src="https://gw-advance-prod-us-east-1-system.s3.amazonaws.com/uploads/entity/headlogo/57c9cca868aeae38369a07aa/Circle_Template.png" alt="USD Logo" draggable="false" height="50" />
+      <a class="navbar-brand" href="https://www.livingbam.org">
+          <img id="USD-logo" src="/media/logo/slack.png" draggable="false" height="50" />
       </a>
       <!-- Collapsible wrapper -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -35,7 +35,10 @@
           </form>
       </div>
       <button class = "nav-item">
-        <a class = "nav-link" href = "{%url 'index' %}">Home</a>
+        <a class = "nav-link" href = "{%url 'homepage' %}">Home</a>
+      </button>
+      <button class = "nav-item">
+        <a class = "nav-link" href = "{%url 'index' %}">Data</a>
       </button>
       {% if user.is_authenticated %}
       <button class = "nav-item">

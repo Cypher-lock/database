@@ -6,9 +6,9 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Material Name</th>
+                        <th>Material Composition</th>
                         <th>Acquisition Method</th>
-                        <th>Name</th>
+                        <th>Owner</th>
                         <th>Date Acquired</th>
                         <th>Last Updated</th>
                         <th>DOI</th>
@@ -27,7 +27,11 @@
                             {% endif %}
                             <td>{{ material.composition }}</td>
                             <td>{{ material.method }}</td>
-                            <td>{{ material.name }}</td>
+                            {% if material.name.first_name %}
+                            <td>{{ material.name.first_name}}</td>
+                            {% else %}
+                            <td>{{ material.name}}</td>
+                            {% endif %}
                             <td>{{ material.acquired }}</td>
                             <td>{{ material.lastupdate }}</td>
                             <td>{{ material.doi }}</td>

@@ -76,7 +76,7 @@ class addForm(ModelForm):
             'summary':'Experimental Protoctol Details',
             'sample_image':'Sample Image',
             'meta_data':'Meta Data',
-            'additional_resources': 'Additional Files'
+            'additional_resources': 'Additional Files',
         }
 
         widgets = {

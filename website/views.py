@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.db import connection, connections
 from django.utils import timezone
 import datetime
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, FileResponse, HttpResponse
 from .models import Softmatterdata
 from .forms import dataForm
 from .forms import addForm
@@ -39,6 +39,17 @@ in_depth = {
     'process_notes' : 'Lorem ipsum dolor sit amet',
     'additional_resources' : 'protocol.pdf'
 }
+
+def homepage(request):
+    return render(request, "website/homepage.html")
+
+def show_pdf(request):
+    with open('media/documentation/Smartbank Website.pdf', 'rb') as pdf:
+        response = HttpResponse(pdf.read(), content_type='application/pdf')
+        response['Content-Disposition'] = 'inline;filename=some_file.pdf'
+        return response
+    pdf.closed
+
 
 
 def index(request):
