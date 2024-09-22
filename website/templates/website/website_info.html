@@ -1,58 +1,91 @@
 {% extends 'base.html' %}
 
-{% block content%}
+{% block content %}
 <center>
     <h1>More Information</h1>
 </center>
-        <div class="table-container">
-            <table class="styled-table">
-                <thead>
-                    <tr>
-                        <th>Related Media</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><b>Composition:</b><br>
-                            {{ in_depth.composition }}
-                        </td>
-                        <td class="w-25">
-                            {% if in_depth.sample_image %}
-                            <img src = "{{in_depth.sample_image.url}}" width = 300>
-                        {% else %}
-                            There are no images
-                        {%endif%}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><b>Process Notes:</b><br>
-                            {{ in_depth.summary }}
-                        </td>
-                        <td>
-                        {%if in_depth.meta_data%}
-
-                            <a href="{{in_depth.meta_data.url}}"><b>Metadata File</b></a>
-                        {%else%}
+<div class="table-container">
+    <table class="styled-table" style="width: 100%;">
+        <thead>
+            <tr>
+                <th colspan="2">Related Media</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% if in_depth.name.first_name %}
+                    <td>Name: {{ in_depth.name.first_name }}</td>
+                {% else %}
+                    <td>Name: {{ in_depth.name }}</td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td>Acquire Date: {{ in_depth.acquired }}</td>
+                <td>Last Update: {{ in_depth.lastupdate }}</td>
+            </tr>
+            <tr>
+                <td><b>Composition:</b><br>{{ in_depth.composition }}</td>
+                <td>
+                    {% if in_depth.sample_image %}
+                        <img src="{{ in_depth.sample_image.url }}" width="300">
+                    {% else %}
+                        There are no images
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td><b>Process Notes:</b><br>{{ in_depth.method }}<br>{{ in_depth.summary }}</td>
+                <td>
+                    {% if in_depth.meta_data %}
+                        <a href="{{ in_depth.meta_data.url }}"><b>Metadata File</b></a>
+                    {% else %}
                         There is no Metadata file.
-                        {%endif%}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><b>DOI:</b><br>
-                            {{in_depth.doi}}
-                        </td>
-                        <td>
-                            {%if in_depth.additional_resources%}
-
-                            <a href="{{in_depth.additional_resources.url}}"><b>Additional Resources</b></a>
-                        {%else%}
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td><b>DOI:</b><br>{{ in_depth.doi }}</td>
+                <td colspan="2">
+                    <b>Additional Resources</b><br>
+                    {% if in_depth.additional_resources1 or in_depth.additional_resources2 or in_depth.additional_resources3 %}
+                        {% if in_depth.additional_resources1 %}
+                            <a href="{{ in_depth.additional_resources1.url }}"><b>File 1</b></a>
+                        {% else %}
+                            No File 1.
+                        {% endif %}
+                        <br>
+                        {% if in_depth.additional_resources2 %}
+                            <a href="{{ in_depth.additional_resources2.url }}"><b>File 2</b></a>
+                        {% else %}
+                            No File 2.
+                        {% endif %}
+                        <br>
+                        {% if in_depth.additional_resources3 %}
+                            <a href="{{ in_depth.additional_resources3.url }}"><b>File 3</b></a>
+                        {% endif %}
+                    {% else %}
                         There are no other files.
-                        {%endif%}
-
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </body>
-{%endblock%}
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {% if in_depth.barcode %}
+                        <a href="{{ in_depth.barcode.url }}"><b>Barcode File</b></a>
+                    {% else %}
+                        There is no barcode.
+                    {% endif %}
+                </td>
+                <td colspan="2">
+                    {% if in_depth.barcode_display %}
+                        <b>Barcode Display:</b><br>
+                        <img src="{{ in_depth.barcode_display.url }}" width="300">
+                    {% else %}
+                        There is no displayable barcode.
+                    {% endif %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

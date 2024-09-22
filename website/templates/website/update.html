@@ -5,10 +5,72 @@
     {% if user == data.name %}
     <h1>Edit Project</h1>
     <br/>
-    <form action="" method = POST enctype="multipart/form-data">
+    <center>
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{form.as_p}}
+        
+        <!-- Render composition and method fields -->
+        <div>
+            {{ form.composition.label_tag }}
+            {{ form.composition }}
+        </div>
+        
+        <div>
+            {{ form.method.label_tag }}
+            {{ form.method }}
+        </div>
+    
+        <!-- Render other fields -->
+        <div>
+            {{ form.doi.label_tag }}
+            {{ form.doi }}
+        </div>
+        
+        <div>
+            {{ form.summary.label_tag }}
+            {{ form.summary }}
+        </div>
+
+        <h3 style="text-align: center;">Data Uploads</h3>
+
+        <div>
+            {{ form.sample_image.label_tag }}
+            {{ form.sample_image }}
+        </div>
+
+        <div>
+            {{ form.barcode.label_tag }}
+            {{ form.barcode }}
+        </div>
+        
+        <div>
+            {{ form.barcode_display.label_tag }}
+            {{ form.barcode_display }}
+        </div>
+        
+        <div>
+            {{ form.meta_data.label_tag }}
+            {{ form.meta_data }}
+        </div>
+
+        <div>
+            {{ form.additional_resources1.label_tag }}
+            {{ form.additional_resources1 }}
+        </div>
+
+        <div>
+            {{ form.additional_resources2.label_tag }}
+            {{ form.additional_resources2 }}
+        </div>
+
+        <div>
+            {{ form.additional_resources3.label_tag }}
+            {{ form.additional_resources3 }}
+        </div>
+        
+        <!-- Submit button -->
         <input type = "submit" value = "Update Values" class = "btn btn-secondary">
+    </center>
     {% else %}
     <h2> Access Denied</h2>
     <h2> Only the project manager can edit the entry</h2>

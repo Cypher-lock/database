@@ -27,6 +27,7 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG", "False")
+#os.getenv("DEBUG", "False") == 
 ALLOWED_HOSTS = ['*']
 
 DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
@@ -151,6 +152,9 @@ ADDITION_ROOT = os.path.join(BASE_DIR, 'add_rec')
 
 BARCODE_URL = '/barcode/'
 BARCODE_ROOT = os.path.join(BASE_DIR, 'barcode')
+
+DISPLAY_URL = '/display/'
+DISPLAY_ROOT = os.path.join(BASE_DIR, 'display')
 
 
 # Additional locations of static files

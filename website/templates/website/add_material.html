@@ -8,13 +8,78 @@
     {% if submitted %}
         Your Project Was Submitted Successfully!
     {% else %}
-    <form action="" method=POST enctype="multipart/form-data">
-        {%csrf_token%}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <!-- Render composition and method fields -->
+        <div>
+            {{ form.composition.label_tag }}
+            {{ form.composition }}
+        </div>
+        
+        <div>
+            {{ form.method.label_tag }}
+            {{ form.method }}
+        </div>
+        
+        <!-- Render acquired field with date input -->
+        <div>
+            {{ form.acquired.label_tag }}
+            {{ form.acquired }}
+        </div>
+    
+        <!-- Render other fields -->
+        <div>
+            {{ form.doi.label_tag }}
+            {{ form.doi }}
+        </div>
+        
+        <div>
+            {{ form.summary.label_tag }}
+            {{ form.summary }}
+        </div>
 
-        {{form.as_p}}
+        <h3 style="text-align: center;">Data Uploads</h3>
 
-        <input type="submit" value="Submit" class="btn btn-secondary">
-        </form>
+        <div>
+            {{ form.sample_image.label_tag }}
+            {{ form.sample_image }}
+        </div>
+
+        <div>
+            {{ form.barcode.label_tag }}
+            {{ form.barcode }}
+        </div>
+        
+        <div>
+            {{ form.barcode_display.label_tag }}
+            {{ form.barcode_display }}
+        </div>
+        
+        <div>
+            {{ form.meta_data.label_tag }}
+            {{ form.meta_data }}
+        </div>
+
+        <div>
+            {{ form.additional_resources1.label_tag }}
+            {{ form.additional_resources1 }}
+        </div>
+
+        <div>
+            {{ form.additional_resources2.label_tag }}
+            {{ form.additional_resources2 }}
+        </div>
+
+        <div>
+            {{ form.additional_resources3.label_tag }}
+            {{ form.additional_resources3 }}
+        </div>
+        
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary">Submit</button>
+    
+      
     {% endif %}
     </center>
 {% else %}

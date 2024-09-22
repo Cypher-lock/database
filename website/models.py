@@ -135,7 +135,11 @@ class Softmatterdata(models.Model):
     lock = models.BooleanField(blank=True, null=True, default=False)
     sample_image = models.ImageField(null=True, blank=True, upload_to="images/")
     meta_data = models.FileField(null=True, blank=True, upload_to="metadata/")
-    additional_resources = models.FileField(null=True, blank=True, upload_to="add_rec/")
+    additional_resources1 = models.FileField(null=True, blank=True, upload_to="add_rec/")
+    additional_resources2 = models.FileField(null=True, blank=True, upload_to="add_rec/")
+    additional_resources3 = models.FileField(null=True, blank=True, upload_to="add_rec/")
+    barcode = models.FileField(null=True, blank=True, upload_to="barcode/")
+    barcode_display = models.FileField(null=True, blank=True, upload_to="display/")
 
     class Meta:
         managed = True

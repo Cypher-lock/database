@@ -34,6 +34,11 @@ acquisition_choices = [
     ("other", "other"),
 ]
 
+def file_size(value): # add this to some file where you can import it from
+    limit = 2 * 1024 * 1024
+    if value.size > limit:
+        raise ValidationError('File too large. Size should not exceed 2 MiB.')
+    
 class dataForm(ModelForm):
     composition =  forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple,
                                           choices=composition_choices, label='Material Composition')
@@ -41,23 +46,32 @@ class dataForm(ModelForm):
                                           choices=acquisition_choices, label='Acquisition Method')
     class Meta:
         model = Softmatterdata
-        fields = ('composition', 'method', 'doi', 'summary', 'sample_image', 'meta_data', 'additional_resources')
+        fields = ('composition', 'method', 'doi', 'summary', 'sample_image', 'meta_data', 'additional_resources1', 'additional_resources2', 'additional_resources3', 'barcode', 'barcode_display')
         labels = {
             'composition': 'Material Composition',
             'method':'Acquisition Method',
             'doi':'DOI',
-            'summary':'Experimental Protoctol Details',
+            'summary':'Experimental Protocol Details',
             'sample_image':'Sample Image',
-            'meta_data':'Meta Data',
-            'additional_resources':'Additional Files',
+            'meta_data':'Metadata',
+            'additional_resources1':'Additional Files',
+            'additional_resources2':'',
+            'additional_resources3':'',
+            'barcode':'Barcode File',
+            'barcode_display':'Barcode Display'
         }
 
         widgets = {
             'doi': forms.TextInput(attrs={'class':'form-control', 'placeholder': 'DOI'}),
             'summary':forms.TextInput(attrs={'class':'form-control', 'placeholder': 'Summary'}),
+            'header':'',
             'sample_image':'',
             'meta_data':'',
-            'additional_resources':'',
+            'additional_resources1':forms.ClearableFileInput(attrs={'class': 'form-control-file', 'required': False, 'validators': [file_size]}),
+            'additional_resources2':forms.ClearableFileInput(attrs={'class': 'form-control-file', 'required': False, 'validators': [file_size]}),
+            'additional_resources3':forms.ClearableFileInput(attrs={'class': 'form-control-file', 'required': False, 'validators': [file_size]}),
+            'barcode':'',
+            'barcode_display':''
         }
 
 class addForm(ModelForm):
@@ -67,16 +81,20 @@ class addForm(ModelForm):
                                           choices=acquisition_choices, label='Acquisition Method')
     class Meta:
         model = Softmatterdata
-        fields = ('composition', 'method', 'acquired', 'doi', 'summary', 'sample_image', 'meta_data', 'additional_resources')
+        fields = ('composition', 'method', 'acquired', 'doi', 'summary', 'sample_image', 'meta_data', 'additional_resources1', 'additional_resources2', 'additional_resources3', 'barcode', 'barcode_display')
         labels = {
             'composition': 'Material Composition',
             'method':'Acquisition Method',
-            'acquired':'Aquisition Date',
+            'acquired':'Acquisition Date',
             'doi':'DOI',
-            'summary':'Experimental Protoctol Details',
+            'summary':'Experimental Protocol Details',
             'sample_image':'Sample Image',
-            'meta_data':'Meta Data',
-            'additional_resources': 'Additional Files',
+            'meta_data':'Metadata',
+            'additional_resources1':'Additional Files',
+            'additional_resources2':'',
+            'additional_resources3':'',
+            'barcode':'Barcode File',
+            'barcode_display':'Barcode Display'
         }
 
         widgets = {
@@ -85,7 +103,11 @@ class addForm(ModelForm):
             'summary': forms.TextInput(attrs={'class':'form-control'}),
             'sample_image':'',
             'meta_data':'',
-            'additional_resources':'',
+            'additional_resources1':forms.ClearableFileInput(attrs={'class': 'form-control-file', 'required': False, 'validators': [file_size]}),
+            'additional_resources2':forms.ClearableFileInput(attrs={'class': 'form-control-file', 'required': False, 'validators': [file_size]}),
+            'additional_resources3':forms.ClearableFileInput(attrs={'class': 'form-control-file', 'required': False, 'validators': [file_size]}),
+            'barcode':'',
+            'barcode_display':''
         }
 
 
